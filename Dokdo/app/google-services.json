@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "730359442133",
+    "firebase_url": "https://dokdo-807e5.firebaseio.com",
+    "project_id": "dokdo-807e5",
+    "storage_bucket": "dokdo-807e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:730359442133:android:017c4d57f3347579",
+        "android_client_info": {
+          "package_name": "com.dokdo.seungyongson.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "730359442133-qhpngnbukchrrro3tsdt16njpcce8tkb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.dokdo.seungyongson.myapplication",
+            "certificate_hash": "0d1f0a7561ebcfbaec2540dd0e435c0aac1f2a24"
+          }
+        },
+        {
+          "client_id": "730359442133-9im6q5ufrjbvf9rjfcpn08l2svmqhaek.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWdjIj5ApmHVy5Bfae4wzY0WgWLcovqrc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "730359442133-9im6q5ufrjbvf9rjfcpn08l2svmqhaek.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

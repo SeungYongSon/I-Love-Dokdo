@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">I LOVE DOKDO</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="news">뉴스</string>
+    <string name="weather">날씨</string>
+    <string name="say">채팅</string>
+    <string name="dep">개발자 소개</string>
+    <string name="action_settings">Settings</string>
+</resources>
