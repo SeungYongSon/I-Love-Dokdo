@@ -51,6 +51,8 @@ public class Weat {
         } else if (Weather.equals("비")) {
             return R.drawable.ic_weather_rain;
         } else if (Weather.equals("눈/비")) {
+            return R.drawable.ic_opacity;
+        }else if (Weather.equals("눈")) {
             return R.drawable.ic_ac_unit;
         }else {
             Log.w("CHECK", "등록된 이미지가 없습니다.");

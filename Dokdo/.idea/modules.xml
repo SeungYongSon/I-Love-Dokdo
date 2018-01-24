@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Dokdo.iml" filepath="$PROJECT_DIR$/Dokdo.iml" />
+      <module fileurl="file://D:\Git Commit\izen1231-commit\The-First-0xD-Happckathon\Dokdo\Dokdo.iml" filepath="D:\Git Commit\izen1231-commit\The-First-0xD-Happckathon\Dokdo\Dokdo.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://D:\Git Commit\izen1231-commit\The-First-0xD-Happckathon\Dokdo\app\app.iml" filepath="D:\Git Commit\izen1231-commit\The-First-0xD-Happckathon\Dokdo\app\app.iml" />
     </modules>
   </component>
 </project>
