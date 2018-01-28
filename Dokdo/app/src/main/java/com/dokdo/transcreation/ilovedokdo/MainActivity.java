@@ -1,4 +1,4 @@
-package com.dokdo.seungyongson.myapplication;
+package com.dokdo.transcreation.ilovedokdo;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -21,11 +21,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dokdo.seungyongson.myapplication.Dictionary.FifthKnow;
-import com.dokdo.seungyongson.myapplication.Dictionary.FirstKnow;
-import com.dokdo.seungyongson.myapplication.Dictionary.FourthKnow;
-import com.dokdo.seungyongson.myapplication.Dictionary.SecondKnow;
-import com.dokdo.seungyongson.myapplication.Dictionary.ThirdKnow;
+import com.dokdo.transcreation.ilovedokdo.Dictionary.FifthKnow;
+import com.dokdo.transcreation.ilovedokdo.Dictionary.FirstKnow;
+import com.dokdo.transcreation.ilovedokdo.Dictionary.FourthKnow;
+import com.dokdo.transcreation.ilovedokdo.Dictionary.SecondKnow;
+import com.dokdo.transcreation.ilovedokdo.Dictionary.ThirdKnow;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

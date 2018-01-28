@@ -1,8 +1,8 @@
-package com.dokdo.seungyongson.myapplication.Weather;
+package com.dokdo.transcreation.ilovedokdo.Weather;
 
 import android.util.Log;
 
-import com.dokdo.seungyongson.myapplication.R;
+import com.dokdo.transcreation.ilovedokdo.R;
 
 /**
  * Created by Seungyong Son on 2018-01-20.

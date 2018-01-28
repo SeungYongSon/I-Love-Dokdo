@@ -1,7 +1,6 @@
-package com.dokdo.seungyongson.myapplication.Weather;
+package com.dokdo.transcreation.ilovedokdo.Weather;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,9 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dokdo.seungyongson.myapplication.R;
+import com.dokdo.transcreation.ilovedokdo.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

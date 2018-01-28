@@ -1,11 +1,10 @@
-package com.dokdo.seungyongson.myapplication.Weather;
+package com.dokdo.transcreation.ilovedokdo.Weather;
 
 
 import android.os.AsyncTask;
-import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 
-import com.dokdo.seungyongson.myapplication.R;
+import com.dokdo.transcreation.ilovedokdo.R;
 
 import java.net.URL;
 import java.util.ArrayList;
@@ -20,8 +19,8 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
-import static com.dokdo.seungyongson.myapplication.WeatherActivity.context;
-import static com.dokdo.seungyongson.myapplication.WeatherActivity.recyclerView;
+import static com.dokdo.transcreation.ilovedokdo.WeatherActivity.context;
+import static com.dokdo.transcreation.ilovedokdo.WeatherActivity.recyclerView;
 
 
 public class Weather{

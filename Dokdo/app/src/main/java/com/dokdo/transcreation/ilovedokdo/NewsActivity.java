@@ -1,7 +1,6 @@
-package com.dokdo.seungyongson.myapplication;
+package com.dokdo.transcreation.ilovedokdo;
 
-import android.app.Activity;
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,38 +9,28 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
-import com.dokdo.seungyongson.myapplication.Weather.RecyclerViewAdapter;
-
-import static com.dokdo.seungyongson.myapplication.Weather.Weather.WhatIsWeather;
-import static com.dokdo.seungyongson.myapplication.Weather.Weather.rva;
-
-
-/**
- * Created by Seungyong Son on 2018-01-20.
- */
-
-
-public class WeatherActivity extends AppCompatActivity
+@SuppressLint("SetJavaScriptEnabled")
+public class NewsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    static public TextView test;
-    static public RecyclerView recyclerView;
-    static public  Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_weather);
+        setContentView(R.layout.activity_news);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        WebView webView = findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("https://m.search.naver.com/search.naver?where=m_news&ie=utf8&sm=mns_hty&query=%EB%8F%85%EB%8F%84");
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -51,13 +40,6 @@ public class WeatherActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-        WhatIsWeather();  // 여기 함수부분
     }
 
     @Override
@@ -66,7 +48,6 @@ public class WeatherActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            rva.RemoveData();
             super.onBackPressed();
         }
     }
@@ -79,21 +60,17 @@ public class WeatherActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
-            Intent intent = new Intent(this, NewsActivity.class);
-            startActivity(intent);
-            rva.RemoveData();
-            finish();
         } else if (id == R.id.nav_gallery) {
-
+            Intent intent = new Intent(this, WeatherActivity.class);
+            startActivity(intent);
+            finish();
         } else if (id == R.id.nav_slideshow) {
             Intent intent = new Intent(this, SayActivity.class);
             startActivity(intent);
-            rva.RemoveData();
             finish();
         } else if (id == R.id.nav_manage) {
             Intent intent = new Intent(this, DepActivity.class);
             startActivity(intent);
-            rva.RemoveData();
             finish();
         } else if (id == R.id.nav_share) {
             Intent intent = new Intent(android.content.Intent.ACTION_SEND);
@@ -120,4 +97,3 @@ public class WeatherActivity extends AppCompatActivity
         return true;
     }
 }
-

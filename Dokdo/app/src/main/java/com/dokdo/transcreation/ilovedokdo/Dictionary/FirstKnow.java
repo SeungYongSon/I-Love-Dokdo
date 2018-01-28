@@ -1,4 +1,4 @@
-package com.dokdo.seungyongson.myapplication.Dictionary;
+package com.dokdo.transcreation.ilovedokdo.Dictionary;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.dokdo.seungyongson.myapplication.R;
+import com.dokdo.transcreation.ilovedokdo.R;
 
 /**
  * Created by Seungyong Son on 2018-01-21.

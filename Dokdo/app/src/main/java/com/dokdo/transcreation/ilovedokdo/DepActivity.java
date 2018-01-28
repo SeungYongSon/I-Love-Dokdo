@@ -1,6 +1,5 @@
-package com.dokdo.seungyongson.myapplication;
+package com.dokdo.transcreation.ilovedokdo;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,39 +10,15 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.ListView;
 
-import com.dokdo.seungyongson.myapplication.FireBase.ChatData;
-import com.google.firebase.database.ChildEventListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-
-import java.util.Random;
-
-/**
- * Created by Seungyong Son on 2018-01-20.
- */
-
-public class SayActivity extends AppCompatActivity
+public class DepActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    ListView listView;
-    EditText editText;
-    String user;
-
-    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_say);
+        setContentView(R.layout.activity_dep);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -55,52 +30,7 @@ public class SayActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
-        listView = (ListView) findViewById(R.id.say_list);
-        editText = (EditText) findViewById(R.id.say_say);
-
-        user = "애국인" + new Random().nextInt(2018);
-
-        final ArrayAdapter<Object> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1);
-        listView.setAdapter(adapter);
-
-
-        databaseReference.child("message").addChildEventListener(new ChildEventListener() {  // message는 child의 이벤트를 수신합니다.
-            @Override
-            public void onChildAdded(DataSnapshot dataSnapshot, String s) {
-                ChatData chatData = dataSnapshot.getValue(ChatData.class);  // chatData를 가져오고
-                adapter.add(chatData.getUserName() + ": " + chatData.getMessage());  // adapter에 추가합니다.
-            }
-
-            @Override
-            public void onChildChanged(DataSnapshot dataSnapshot, String s) {
-            }
-
-            @Override
-            public void onChildRemoved(DataSnapshot dataSnapshot) {
-            }
-
-            @Override
-            public void onChildMoved(DataSnapshot dataSnapshot, String s) {
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
     }
-
-    public void onClick(View v) {
-
-        switch (v.getId()){
-            case R.id.say_send :
-                ChatData chatData = new ChatData(user, editText.getText().toString());
-                databaseReference.child("message").push().setValue(chatData);
-                editText.setText("");
-        }
-    }
-
-
 
     @Override
     public void onBackPressed() {
@@ -128,11 +58,11 @@ public class SayActivity extends AppCompatActivity
             startActivity(intent);
             finish();
         } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-            Intent intent = new Intent(this, DepActivity.class);
+            Intent intent = new Intent(this, SayActivity.class);
             startActivity(intent);
             finish();
+        } else if (id == R.id.nav_manage) {
+
         } else if (id == R.id.nav_share) {
             Intent intent = new Intent(android.content.Intent.ACTION_SEND);
 

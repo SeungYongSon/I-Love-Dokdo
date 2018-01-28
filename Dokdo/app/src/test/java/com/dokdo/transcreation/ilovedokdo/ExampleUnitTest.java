@@ -1,4 +1,4 @@
-package com.dokdo.seungyongson.myapplication;
+package com.dokdo.transcreation.ilovedokdo;
 
 import org.junit.Test;
 
