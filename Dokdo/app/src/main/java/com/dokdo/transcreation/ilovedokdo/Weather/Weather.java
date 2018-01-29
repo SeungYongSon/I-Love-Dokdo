@@ -8,6 +8,7 @@ import com.dokdo.transcreation.ilovedokdo.R;
 
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -19,6 +20,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 
+import static com.dokdo.transcreation.ilovedokdo.MainActivity.img_wea;
+import static com.dokdo.transcreation.ilovedokdo.MainActivity.wea_content;
+import static com.dokdo.transcreation.ilovedokdo.MainActivity.wea_title;
 import static com.dokdo.transcreation.ilovedokdo.WeatherActivity.context;
 import static com.dokdo.transcreation.ilovedokdo.WeatherActivity.recyclerView;
 
@@ -28,15 +32,20 @@ public class Weather{
     static public Document doc = null;
     static public  List<Weat> items=new ArrayList<>();
     static public  Weat[] item;
+    static public Weat ni, ni2;
     static public RecyclerViewAdapter rva;
+    static boolean mainA = false;
 
-    static public void WhatIsWeather(){
+    public static void WhatIsWeather(boolean now){
         GetXMLTask task = new GetXMLTask();
         task.execute("http://www.weather.go.kr/wid/queryDFSRSS.jsp?zone=4794033000");
+
+        if (now) mainA = true;
+        else mainA = false;
     }
 
     //private inner class extending AsyncTask
-    static public class GetXMLTask extends AsyncTask<String, Void, Document> {
+    public static class GetXMLTask extends AsyncTask<String, Void, Document> {
 
         @Override
         protected Document doInBackground(String... urls) {
@@ -81,24 +90,49 @@ public class Weather{
                 NodeList dayList  = fstElmnt.getElementsByTagName("day");
                 Day = dayList.item(0).getChildNodes().item(0).getNodeValue();
 
-                if(Integer.parseInt(Day) == 0){
-                    Day = "어제";
-                } else if(Integer.parseInt(Day) == 1){
-                    Day = "오늘";
-                }else{
-                    Day = "내일";
-                }
-
                 NodeList weaList = fstElmnt.getElementsByTagName("wfKor");
                 Weather = weaList.item(0).getChildNodes().item(0).getNodeValue();
 
-                item[i]=new Weat(Time + ":00", Temp, Weather, Day);
-                items.add(item[i]);
-                Log.d("asdf", Time + " " + Temp + " " + Day  + " " + Weather);
-            }
-            rva = new RecyclerViewAdapter(context,items, R.layout.content_weather);
+                if(!mainA) {
+                    if(Integer.parseInt(Day) == 0){
+                        Day = "어제";
+                    } else if(Integer.parseInt(Day) == 1){
+                        Day = "오늘";
+                    }else{
+                        Day = "내일";
+                    }
+                    item[i] = new Weat(Time + ":00", Temp, Weather, Day);
+                    items.add(item[i]);
+                }else {
+                    Calendar cal = Calendar.getInstance();
+                    int time = Integer.parseInt(Time);
+                    int ntime = cal.get(Calendar.HOUR);
 
-            recyclerView.setAdapter(rva);
+                    for(int j = 3; j <= 24;){
+                        if(j<= ntime && j*3 > ntime){
+                            if(j == time){
+                                if(Integer.parseInt(Day) == 1){
+                                    ni = new Weat(Weather);
+                                }else {
+                                    ni2 = new Weat(Weather);
+                                }
+                                Log.e("****현재 날씨 파싱****", Time + " " + Temp + " " + Day  + " " + Weather);
+                            }
+                        }
+                        j *= 3;
+                    }
+
+                }
+                Log.d("****날씨 파싱****", Time + " " + Temp + " " + Day  + " " + Weather);
+            }
+            if(!mainA){
+                rva = new RecyclerViewAdapter(context,items, R.layout.content_weather);
+                recyclerView.setAdapter(rva);
+            }else {
+                wea_title.setText(ni.getWeather());
+                wea_content.setText("어제 이 시각에는 "+ ni2.getWeather());
+                img_wea.setImageResource(ni.getImage());
+            }
             super.onPostExecute(doc);
         }
     }//end inner class - GetXMLTask

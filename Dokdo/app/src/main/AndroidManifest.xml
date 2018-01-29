@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.dokdo.seungyongson.myapplication">
+    package="com.dokdo.transcreation.ilovedokdo">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".SplashActivity"
+            android:name="com.dokdo.transcreation.ilovedokdo.SplashActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -19,23 +19,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity android:name="com.dokdo.transcreation.ilovedokdo.MainActivity"
             android:label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;I LOVE DOKDO"
             android:theme="@style/SplashTheme">
         </activity>
-        <activity android:name=".NewsActivity"
+        <activity android:name="com.dokdo.transcreation.ilovedokdo.NewsActivity"
             android:label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;I LOVE DOKDO"
             android:theme="@style/SplashTheme">
         </activity>
-        <activity android:name=".WeatherActivity"
+        <activity android:name="com.dokdo.transcreation.ilovedokdo.WeatherActivity"
             android:label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;I LOVE DOKDO"
             android:theme="@style/SplashTheme">
         </activity>
-        <activity android:name=".SayActivity"
+        <activity android:name="com.dokdo.transcreation.ilovedokdo.SayActivity"
             android:label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;I LOVE DOKDO"
             android:theme="@style/SplashTheme">
         </activity>
-        <activity android:name=".DepActivity"
+        <activity android:name="com.dokdo.transcreation.ilovedokdo.DepActivity"
             android:label="&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;I LOVE DOKDO"
             android:theme="@style/SplashTheme">
         </activity>

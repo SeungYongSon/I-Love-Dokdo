@@ -27,11 +27,14 @@ import com.dokdo.transcreation.ilovedokdo.Dictionary.FourthKnow;
 import com.dokdo.transcreation.ilovedokdo.Dictionary.SecondKnow;
 import com.dokdo.transcreation.ilovedokdo.Dictionary.ThirdKnow;
 
+import static com.dokdo.transcreation.ilovedokdo.Weather.Weather.WhatIsWeather;
+
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    public TextView wea_title, wea_content;
-    public ImageView img_wea;
+    public static TextView wea_title, wea_content;
+    public static ImageView img_wea;
+
     public ViewPager viewPager;
     int MAX_PAGE=5;
     Fragment cur_fragment = new Fragment();
@@ -52,7 +55,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
 
         viewPager=(ViewPager)findViewById(R.id.dictionary);
         viewPager.setAdapter(new adapter(getSupportFragmentManager()));
@@ -84,6 +86,11 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onPageScrollStateChanged(int state) {}
         });
+
+        wea_title = (TextView) findViewById(R.id.wea_title);
+        wea_content = (TextView) findViewById(R.id.wea_content);
+        img_wea = (ImageView) findViewById(R.id.wea_image);
+        WhatIsWeather(true);
     }
 
     public void onClick(View v) {

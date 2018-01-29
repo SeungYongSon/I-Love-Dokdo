@@ -83,4 +83,8 @@ public class Weat {
         this.Weather=Weather;
         this.Day=Day;
     }
+
+    public Weat(String Weather){
+        this.Weather = Weather;
+    }
 }

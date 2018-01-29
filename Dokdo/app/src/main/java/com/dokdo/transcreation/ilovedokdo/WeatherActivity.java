@@ -15,8 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import static com.dokdo.transcreation.ilovedokdo.Weather.Weather.WhatIsWeather;
-import static com.dokdo.transcreation.ilovedokdo.Weather.Weather.rva;
+import static com.dokdo.transcreation.ilovedokdo.Weather.Weather.*;
 
 
 /**
@@ -53,7 +52,7 @@ public class WeatherActivity extends AppCompatActivity
         LinearLayoutManager layoutManager=new LinearLayoutManager(getApplicationContext());
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
-        WhatIsWeather();  // 여기 함수부분
+        WhatIsWeather(false);  // 여기 함수부분
     }
 
     @Override
@@ -99,7 +98,7 @@ public class WeatherActivity extends AppCompatActivity
             // Set default text message
             // 카톡, 이메일, MMS 다 이걸로 설정 가능
             //String subject = "문자의 제목";
-            String text = "우리 모두 독도사랑하즈아!!";
+            String text = "우리 모두 독도사랑 하즈아!!";
             //intent.putExtra(Intent.EXTRA_SUBJECT, subject);
             intent.putExtra(Intent.EXTRA_TEXT, text);
 

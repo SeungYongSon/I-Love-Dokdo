@@ -10,7 +10,7 @@
         android:id="@+id/wea_cardview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp">
+        android:layout_marginTop="5dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -30,22 +30,23 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal|bottom"
-                    android:layout_weight="0.8"
+                    android:layout_weight="0.95"
                     android:gravity="center_horizontal"
                     android:text="오늘"
-                    android:textSize="30dp" />
+                    android:textSize="32dp" />
 
                 <RelativeLayout
                     android:layout_width="0dp"
-                    android:layout_weight="0.2"
+                    android:layout_weight="0.15"
                     android:layout_height="wrap_content"/>
 
                 <ImageView
                     android:id="@+id/wea_image"
-                    android:layout_width="50dp"
+                    android:layout_width="80dp"
                     android:layout_height="50dp"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
+                    android:layout_gravity="bottom|center_horizontal"
                     android:layout_marginEnd="55dp"
                     android:layout_marginTop="10dp"
                     android:background="#FFFF" />
@@ -65,7 +66,8 @@
                 android:text="14:00"
                 android:gravity="center_horizontal"
                 android:textColor="#99919A"
-                android:textSize="50dp" />
+                android:textSize="50dp"
+                android:layout_marginBottom="10dp"/>
 
                 <TextView
                     android:id="@+id/wea_weather"
@@ -76,7 +78,7 @@
                     android:gravity="center_horizontal"
                     android:text="비가 주륵주륵"
                     android:textColor="#99919A"
-                    android:textSize="20dp" />
+                    android:textSize="25dp" />
             </LinearLayout>
         </RelativeLayout>
     </android.support.v7.widget.CardView>
