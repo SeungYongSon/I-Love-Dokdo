@@ -30,7 +30,7 @@ import static com.dokdo.transcreation.ilovedokdo.WeatherActivity.recyclerView;
 public class Weather{
 
     static public Document doc = null;
-    static public  List<Weat> items=new ArrayList<>();
+    static public  List<Weat> items = new ArrayList<>();
     static public  Weat[] item;
     static public Weat ni, ni2;
     static public RecyclerViewAdapter rva;
@@ -113,15 +113,23 @@ public class Weather{
                             if(j == time){
                                 if(Integer.parseInt(Day) == 1){
                                     ni = new Weat(Weather);
-                                }else {
+                                }else if(Integer.parseInt(Day) == 2){
                                     ni2 = new Weat(Weather);
                                 }
-                                Log.e("****현재 날씨 파싱****", Time + " " + Temp + " " + Day  + " " + Weather);
+                                Log.e("****IF 현재 날씨 파싱****", Time + " " + Temp + " " + Day  + " " + Weather + " " + ntime + " " + j);
+                            }
+                        }else {
+                            if(24 == time && ntime < 3 && j == 3){
+                                if(Integer.parseInt(Day) == 1){
+                                    ni = new Weat(Weather);
+                                }else if(Integer.parseInt(Day) == 2){
+                                    ni2 = new Weat(Weather);
+                                }
+                                Log.e("****ELSE 현재 날씨 파싱****", Time + " " + Temp + " " + Day  + " " + Weather + " " + ntime + " " + j);
                             }
                         }
                         j *= 3;
                     }
-
                 }
                 Log.d("****날씨 파싱****", Time + " " + Temp + " " + Day  + " " + Weather);
             }
@@ -130,7 +138,7 @@ public class Weather{
                 recyclerView.setAdapter(rva);
             }else {
                 wea_title.setText(ni.getWeather());
-                wea_content.setText("어제 이 시각에는 "+ ni2.getWeather());
+                wea_content.setText("내일 이 시각에는 "+ ni2.getWeather());
                 img_wea.setImageResource(ni.getImage());
             }
             super.onPostExecute(doc);
