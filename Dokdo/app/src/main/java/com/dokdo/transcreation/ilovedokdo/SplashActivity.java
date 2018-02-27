@@ -37,13 +37,13 @@ public class SplashActivity extends Activity {
             }
             else {
                 // 네트워크 오프라인 상태.
-                Toast.makeText(getApplicationContext(),"네트워크가 연결되지 않았습니다!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"네트워크가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();
                 finish();
             }
 
         } else {
             // 네트워크 null.. 모뎀이 없는 경우??
-            Toast.makeText(getApplicationContext(),"뭐야 실화야..?", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"네트워크가 연결되지 않았습니다", Toast.LENGTH_SHORT).show();
             finish();
         }
     }

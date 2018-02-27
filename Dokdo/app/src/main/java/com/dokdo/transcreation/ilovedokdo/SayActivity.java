@@ -24,9 +24,6 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Random;
 
-/**
- * Created by Seungyong Son on 2018-01-20.
- */
 
 public class SayActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -58,7 +55,7 @@ public class SayActivity extends AppCompatActivity
         listView = (ListView) findViewById(R.id.say_list);
         editText = (EditText) findViewById(R.id.say_say);
 
-        user = "애국인" + new Random().nextInt(2018);
+        user = "유저" + new Random().nextInt(2018);
 
         final ArrayAdapter<Object> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, android.R.id.text1);
         listView.setAdapter(adapter);
@@ -140,7 +137,7 @@ public class SayActivity extends AppCompatActivity
             // Set default text message
             // 카톡, 이메일, MMS 다 이걸로 설정 가능
             //String subject = "문자의 제목";
-            String text = "우리 모두 독도사랑하즈아!!";
+            String text = "I LOVE DOKDO 독도 홍보 앱 입니다!";
             //intent.putExtra(Intent.EXTRA_SUBJECT, subject);
             intent.putExtra(Intent.EXTRA_TEXT, text);
 
