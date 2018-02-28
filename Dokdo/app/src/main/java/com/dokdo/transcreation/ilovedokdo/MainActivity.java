@@ -35,7 +35,9 @@ public class MainActivity extends AppCompatActivity
     public static TextView wea_title, wea_content;
     public static ImageView img_wea;
 
-    public ViewPager viewPager;
+    public ViewPager viewDiPager, viewDokPager;
+    MainDokdoImgSliderAdapter dokAdapter;
+
     int MAX_PAGE=5;
     Fragment cur_fragment = new Fragment();
 
@@ -56,10 +58,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        viewPager=(ViewPager)findViewById(R.id.dictionary);
-        viewPager.setAdapter(new adapter(getSupportFragmentManager()));
-        viewPager.setCurrentItem(0);
-        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        viewDokPager = (ViewPager) findViewById(R.id.view);
+        dokAdapter = new MainDokdoImgSliderAdapter(this);
+        viewDokPager.setAdapter(dokAdapter);
+
+        viewDiPager = (ViewPager)findViewById(R.id.dictionary);
+        viewDiPager.setAdapter(new adapter(getSupportFragmentManager()));
+        viewDiPager.setCurrentItem(0);
+        viewDiPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
 
