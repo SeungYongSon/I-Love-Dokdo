@@ -8,12 +8,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
-/**
- * Created by Seungyong Son on 2018-02-28.
- */
+
 public class MainDokdoImgSliderAdapter extends PagerAdapter{
 
-    private int[] images = {R.drawable.dokdo, R.drawable.dokdo_sec};
+    private int[] images = {R.drawable.dokdo, R.drawable.dokdo_sec, R.drawable.dokdoo};
     private LayoutInflater inflater;
     private Context context;
 
