@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
+import static com.dokdo.transcreation.ilovedokdo.News.NaverNewsSearch.NaverSearch;
+
 @SuppressLint("SetJavaScriptEnabled")
 public class NewsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -40,6 +42,8 @@ public class NewsActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        NaverSearch(); // 네이버 뉴스 검색 api 테스트 Log 확인 바람.
     }
 
     @Override

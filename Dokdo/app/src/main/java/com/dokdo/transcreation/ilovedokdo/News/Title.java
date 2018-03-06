@@ -5,4 +5,18 @@ package com.dokdo.transcreation.ilovedokdo.News;
  */
 
 public class Title {
+    public static String title;
+
+    Title(String title){
+        this.title = title;
+    }
+
+    public String getTitle() {
+        if(title != null) return title;
+        return null;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 }

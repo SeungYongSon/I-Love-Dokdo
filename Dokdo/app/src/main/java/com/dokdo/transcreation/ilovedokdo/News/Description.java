@@ -5,4 +5,18 @@ package com.dokdo.transcreation.ilovedokdo.News;
  */
 
 public class Description {
+    public static String description;
+
+    Description(String description){
+        this.description = description;
+    }
+
+    public String getDescription() {
+        if(description != null) return description;
+        return null;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
