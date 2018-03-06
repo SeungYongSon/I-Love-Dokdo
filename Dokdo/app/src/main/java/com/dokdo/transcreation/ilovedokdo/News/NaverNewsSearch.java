@@ -26,7 +26,7 @@ public class NaverNewsSearch {
         new Thread() {
             public void run() {
                 try {
-                    String text = URLEncoder.encode("대덕소프트웨어마이스터고등학교", "UTF-8");
+                    String text = URLEncoder.encode("독도", "UTF-8");
                     String apiURL = "https://openapi.naver.com/v1/search/news?query=" + text + "&display=100&start=1&sort=sim"; // json 결과
                     URL url = new URL(apiURL);
                     HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -53,7 +53,7 @@ public class NaverNewsSearch {
                     jsonArray = jsonObject.getJSONArray("items");
 
                     if(jsonArray != null) // 킹갓 원준이가 도와줌
-                        for(int i = 0; i < jsonArray.length(); i++) {
+                        for(int i = 0; i < jsonArray.length(); i++) { 
                             newsInfos.add(new NewsInfo(jsonArray.getJSONObject(i).getString("title"), jsonArray.getJSONObject(i).getString("link"),
                                     jsonArray.getJSONObject(i).getString("description")));
                             Log.d("KIMWONJUN_IS_GOD [" + i + "]", newsInfos.get(i).getTitle() + " " + newsInfos.get(i).getLink() + " " + newsInfos.get(i).getDescription());
