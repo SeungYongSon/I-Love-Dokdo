@@ -11,6 +11,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Seungyong Son on 2018-03-05.
@@ -52,11 +53,16 @@ public class NaverNewsSearch {
                     jsonObject = new JSONObject(response.toString());
                     jsonArray = jsonObject.getJSONArray("items");
 
-                    if(jsonArray != null) // 킹갓 원준이가 도와줌
+                    if(jsonArray != null)
                         for(int i = 0; i < jsonArray.length(); i++) { 
                             newsInfos.add(new NewsInfo(jsonArray.getJSONObject(i).getString("title"), jsonArray.getJSONObject(i).getString("link"),
                                     jsonArray.getJSONObject(i).getString("description")));
-                            Log.d("KIMWONJUN_IS_GOD [" + i + "]", newsInfos.get(i).getTitle() + " " + newsInfos.get(i).getLink() + " " + newsInfos.get(i).getDescription());
+
+                            // split()로 필요없는 쓰레기 문자들 걸러내기
+                            newsInfos.get(i).setTitle(Arrays.toString(newsInfos.get(i).getTitle().split("<b>|</b>|&quot;|&lt;|&gt;")));
+                            newsInfos.get(i).setDescription((Arrays.toString(newsInfos.get(i).getDescription().split("<b>|</b>|&quot;|&lt;|&gt;"))));
+
+                            Log.d("Naver Data Result [" + i + "]", newsInfos.get(i).getTitle() + " " + newsInfos.get(i).getLink() + " " + newsInfos.get(i).getDescription());
                         }
 
                 } catch (Exception e) {
