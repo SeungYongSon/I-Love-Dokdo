@@ -10,15 +10,21 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import static com.dokdo.transcreation.ilovedokdo.News.NaverNewsSearch.NaverSearch;
+import com.dokdo.transcreation.ilovedokdo.News.NaverNewsSearch;
+import com.dokdo.transcreation.ilovedokdo.News.NewsInfo;
+
+import java.util.ArrayList;
 
 @SuppressLint("SetJavaScriptEnabled")
 public class NewsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    private static ArrayList<NewsInfo> newsInfos = new ArrayList<NewsInfo>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +49,15 @@ public class NewsActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        NaverSearch(); // 네이버 뉴스 검색 api 테스트 Log 확인 바람.
+        // 네이버 Data API 로 뉴스를 파싱하고 ArrayLIst<NewsInfo> 로 되있는 newsInfos 에다가 넣음
+        // 추후 newsInfo 를 통해 뉴스 자료들을 리사이클러뷰로 보여줄 예정
+        NaverNewsSearch nns = new NaverNewsSearch();
+        try {
+            newsInfos.addAll(nns.newsSearch());
+            Log.d("NewsActivity Result [" + 0 + "]", newsInfos.get(0).getTitle() + " " + newsInfos.get(0).getLink() + " " + newsInfos.get(0).getDescription());
+        } catch(Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
