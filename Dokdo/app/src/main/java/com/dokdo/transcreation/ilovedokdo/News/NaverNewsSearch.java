@@ -69,8 +69,13 @@ public class NaverNewsSearch {
                                     jsonArray.getJSONObject(i).getString("description")));
 
                             // split()로 필요없는 쓰레기 문자들 걸러내기
-                            newsInfos.get(i).setTitle(Arrays.toString(newsInfos.get(i).getTitle().split("<b>|</b>|&quot;|&lt;|&gt;")));
-                            newsInfos.get(i).setDescription((Arrays.toString(newsInfos.get(i).getDescription().split("<b>|</b>|&quot;|&lt;|&gt;"))));
+                            newsInfos.get(i).setTitle(Arrays.toString(newsInfos.get(i).getTitle().split("<b>|</b>|&quot;|&lt;|&gt;|&quot;|&amp|,"))
+                                    .replace("[,", "")
+                                    .replace("[", "")
+                                    .replace("]", ""));
+                            newsInfos.get(i).setDescription(Arrays.toString(newsInfos.get(i).getDescription().split("<b>|</b>|&quot;|&lt;|&gt;|&amp|,"))                                    .replace("[,", "")
+                                    .replace("[", "")
+                                    .replace("]", ""));
 
                             Log.d("Naver Data Result [" + i + "]", newsInfos.get(i).getTitle() + " " + newsInfos.get(i).getLink() + " " + newsInfos.get(i).getDescription());
                         }

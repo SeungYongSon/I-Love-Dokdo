@@ -1,28 +1,30 @@
 package com.dokdo.transcreation.ilovedokdo;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 import com.dokdo.transcreation.ilovedokdo.News.NaverNewsSearch;
-import com.dokdo.transcreation.ilovedokdo.News.RecyclerViewAdapter;
+import com.dokdo.transcreation.ilovedokdo.News.NewsInfo;
 
-public class NewsActivity extends AppCompatActivity
+import java.util.ArrayList;
+
+@SuppressLint("SetJavaScriptEnabled")
+public class NewsWebActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    static public RecyclerView recyclerView;
-    static public SwipeRefreshLayout swiperefresh;
-    static public RecyclerViewAdapter rva;
+    private static ArrayList<NewsInfo> newsInfos = new ArrayList<NewsInfo>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,12 @@ public class NewsActivity extends AppCompatActivity
         setContentView(R.layout.activity_news);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        WebView webView = findViewById(R.id.webView);
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl("https://m.search.naver.com/search.naver?where=m_news&ie=utf8&sm=mns_hty&query=%EB%8F%85%EB%8F%84");
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -41,34 +49,15 @@ public class NewsActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerview);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(layoutManager);
-
-        final NaverNewsSearch nns = new NaverNewsSearch();
+        // 네이버 Data API 로 뉴스를 파싱하고 ArrayLIst<NewsInfo> 로 되있는 newsInfos 에다가 넣음
+        // 추후 newsInfo 를 통해 뉴스 자료들을 리사이클러뷰로 보여줄 예정
+        NaverNewsSearch nns = new NaverNewsSearch();
         try {
-            rva = new RecyclerViewAdapter(getApplicationContext(), nns.newsSearch(), R.layout.content_news);
-            recyclerView.setAdapter(rva);
-        } catch (Exception e) {
+            newsInfos.addAll(nns.newsSearch());
+            Log.d("NewsActivity Result [" + 0 + "]", newsInfos.get(0).getTitle() + " " + newsInfos.get(0).getLink() + " " + newsInfos.get(0).getDescription());
+        } catch(Exception e) {
             e.printStackTrace();
         }
-
-        swiperefresh = (SwipeRefreshLayout) findViewById(R.id.swiperefresh);
-        swiperefresh.setOnRefreshListener(
-                new SwipeRefreshLayout.OnRefreshListener() {
-                    @Override
-                    public void onRefresh() {
-                        try {
-                            rva.RemoveData();
-                            rva.add(nns.newsSearch());
-                            swiperefresh.setRefreshing(false);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                    }
-                }
-        );
     }
 
     @Override
@@ -102,7 +91,7 @@ public class NewsActivity extends AppCompatActivity
             startActivity(intent);
             finish();
         } else if (id == R.id.nav_share) {
-            Intent intent = new Intent(android.content.Intent.ACTION_SEND);
+            Intent intent = new Intent(Intent.ACTION_SEND);
 
             intent.setType("text/plain");
 

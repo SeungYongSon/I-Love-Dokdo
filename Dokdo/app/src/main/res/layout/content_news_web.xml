@@ -6,21 +6,22 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 app:layout_behavior="@string/appbar_scrolling_view_behavior"
 tools:context="com.dokdo.transcreation.ilovedokdo.MainActivity"
-tools:showIn="@layout/app_bar_weather"
+tools:showIn="@layout/app_bar_news"
     android:background="@color/colorPrimaryDark"
     android:orientation="vertical">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:id="@+id/swiperefresh"
+    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-    <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview"
+        <WebView
+            android:id="@+id/webView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginBottom="5dp"
-            android:layout_alignParentBottom="true" />
-    </android.support.v4.widget.SwipeRefreshLayout>
+            android:layout_height="match_parent"/>
+    </FrameLayout>
+
+
 </RelativeLayout>
