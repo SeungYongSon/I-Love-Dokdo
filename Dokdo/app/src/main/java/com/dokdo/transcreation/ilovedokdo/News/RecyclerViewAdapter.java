@@ -53,7 +53,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(item.getLink()));
-                intent.setPackage("com.android.chrome");
+                //intent.setPackage("com.android.chrome");
                 context.startActivity(intent);
             }
         });
