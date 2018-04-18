@@ -1,5 +1,4 @@
-#  I LOVE DOKDO!
-* I LOVE DOKDO!  
+#  I LOVE DOKDO!  
 * 0xD 1회 햅커톤때 만들고 부족한 기능을 계속 추가한 독도앱입니다.
 
 # 제작하게 된 계기
